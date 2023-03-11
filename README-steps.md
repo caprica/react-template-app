@@ -56,7 +56,7 @@ touch .prettierrc
 
 ### Configure ESLint
 
-In `.eslintrc.json`:
+In `.eslintrc.js`:
 
 #### Jest
 
@@ -64,7 +64,7 @@ Add "jest" true to "env":
 
 ```json
 {
-    "env": {
+    env: {
         "browser": true,
         "es2021": true,
         "jest": true
@@ -78,7 +78,7 @@ Add "prettier" to "extends", make sure it add it last to prevent conflicts with 
 
 ```json
 {
-    "extends": [
+    extends: [
         "eslint:recommended",
         "plugin:react/recommended",
         "plugin:@typescript-eslint/recommended",
@@ -93,7 +93,7 @@ Add "react-hooks" and "prettier" to plugins:
 
 ```json
 {
-    "plugins": [
+    plugins: [
         "react",
         "react-hooks",
         "@typescript-eslint",
@@ -116,7 +116,7 @@ Add "import" to "plugins":
 
 ```json
 {
-    "plugins": [
+    plugins: [
         "react",
         "react-hooks",
         "@typescript-eslint",
@@ -132,11 +132,24 @@ Add to "settings":
 
 ```json
 {
-	"settings": {
+	settings: {
         "import/resolver": {
         "typescript": {}
     }
 }
+```
+
+#### Ignore
+
+By default ESLint will attempt to lint its own configuration file, (at least it
+will within VS Code) and will fail with an error "'module' is not defined".
+
+Create and configure `.eslintignore`:
+
+```
+.eslintrc.json
+/node_modules
+/build
 ```
 
 ### Configure Prettier
@@ -292,5 +305,4 @@ serve -s build
 ## TODO
 
  * Include code coverage check
- * Migrate instructions to ESLint v9 (new configuration replaces .eslintrc)
  * Integrate Cypress in a way that does conflict with Jest types
